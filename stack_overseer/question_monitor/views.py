@@ -1,3 +1,4 @@
+import html
 import time
 
 from django.contrib import messages
@@ -38,8 +39,9 @@ class QuestionView(TemplateView):
 
         top_ten = []  # a list of top ten votes
         for each_question in question_json["items"]:
+            title = html.unescape(each_question['title'])
             info_block = [str(each_question["score"]), each_question["link"], each_question["tags"],
-                          each_question["title"], str(each_question['question_id'])]
+                          title, str(each_question['question_id']), str(each_question["answer_count"])]
             top_ten.append(info_block)
         # print(top_ten)
         return top_ten

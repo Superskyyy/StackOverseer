@@ -15,13 +15,15 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Trending Questions (This Week)</h1>
+            <h1 class="h3 mb-0 text-gray-800">Trending Questions on <strong>Android</strong> (Past Week)</h1>
+            <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
         </div>
 
         <div class="row">
             {% for i in card_loop %}
 
                 <!-- Now we have 10 boxes of identical size and style, ready to inject data -->
+
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
@@ -30,22 +32,23 @@
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Votes
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ top_ten|index:forloop.counter0|index:0 }}</div>
                                     </div>
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Views
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ top_ten|index:forloop.counter0|index:0 }}</div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Answers
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ top_ten|index:forloop.counter0|index:5 }}</div>
                                     </div>
 
                                     <a href="{{ top_ten|index:forloop.counter0|index:1 }}" target="_blank"
                                        title="Click here to StackOverflow"> <i class="fas fa-link fa-2x "></i></a>
 
                                 </div>
-                                <div class="col-auto q-title">
 
+                                <div class="col-auto q-title">
                                     <a data-toggle="modal"
                                        data-target="#exampleModalLong{{ top_ten|index:forloop.counter0|index:4 }}">
-                                        <h2>
+
+                                        <h2 id="clickable-title">
                                             <small>
                                                 {{ top_ten|index:forloop.counter0|index:3 }}
-                                                {{ top_ten|index:forloop.counter0|index:4 }}
+
                                                 <div id="question_id"
                                                      hidden>{{ top_ten|index:forloop.counter0|index:4 }}</div>
                                             </small>
@@ -97,15 +100,30 @@
                             {'question_id': question_id},
                             function (data) {
                                 console.log(data.data.items[0][0]);
-                                for (let i = 0; i < 2; i++) {
+                                console.log(data.data.items.length);
+                                let html_base = [];
+                                html_base.push("<div id='modal-data-wrap'>" +
+                                    "<i id='question-icon' class='fas fa-question question-icon'></i>" +
+                                    "<div>" + data.data.items[0][0] + "</div>" +
+                                    "<div>" + data.data.items[0][1] + "</div>" +
+                                    "<div>" + data.data.items[0][2] + "</div>" + "</div>")
+                                for (let e = 1; e < data.data.items.length; e++) {
 
-                                    $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[0][i] + "</div>");
-                                    console.log(i);
+                                    html_base.push("<div id='modal-data-wrap'>" +
+                                        "<div>" + data.data.items[e][0] + "</div>" +
+                                        "<div>" + data.data.items[e][1] + "</div>" +
+                                        "<div>" + data.data.items[e][2] + "</div>" + "</div>")
+
+                                    {% comment %}                         $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[e][0] + "</div>");
+                                                             $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[e][1] + "</div>");
+                                                             $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[e][2] + "</div>");
+                                                             $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>--------------------------</div>");
+                                                             $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>--------------------------</div>");{% endcomment %}
+
                                 }
+                                $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').html(html_base.join(""))
 
-                                $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div class='topbar-divider d-none d-sm-block'>--------------------------</div>");
-                                $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[1][1] + "</div>");
-                                console.log(1111);
+
                             }
                         );
                     });

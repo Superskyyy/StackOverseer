@@ -7,9 +7,36 @@
 }
 
 .q-title {
-    font-size: 20px;
+
     padding-left: 100px !important; /* add a padding from left side*/
-    width: 90%
+    width: 90%;
+    font-size: 18px;
+    font-weight: 600;
+    font-synthesis: style;
+    line-height: 1.6;
+    color: #1a1a1a;
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+
+#clickable-title {
+
+    cursor: pointer;
+}
+
+#question-icon {
+    border-width: 0;
+
+}
+
+#modal-data-wrap {
+    padding: 5px;
+    border-radius: 15px;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: #4e73df;
+    margin-bottom: 10px;
+
 }
 
 .col-xl-3 {
