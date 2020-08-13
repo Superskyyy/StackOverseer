@@ -44,7 +44,7 @@ INSTALLED_APPS += [
 # Global usage
 INSTALLED_APPS += [
     'bootstrap4',
-
+    'leaflet',
 ]
 
 MIDDLEWARE = [

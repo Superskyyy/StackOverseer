@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    image: stack_overseer:latest_dev
+    command: bash -c "cd stack_overseer && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/stack_overseer
+    ports:
+      - "8000:8000"
