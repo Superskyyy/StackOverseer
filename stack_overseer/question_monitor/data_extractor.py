@@ -81,7 +81,10 @@ if __name__ == "__main__":
         info_block = [each_question["score"], each_question["link"], each_question["tags"]]
         top_ten.append(info_block)
     print(top_ten)
-
+    question_extractor = Extractor(api_key="6pOvVEqSzJc2ki6x5q)o6w((", request_type="search", site="stackoverflow",
+                                   tagged="android", page=1, pagesize=10, sort="votes")
+    json_data = my_extractor.extract()
+    print(json_data)
     answer_extractor = Extractor(api_key="6pOvVEqSzJc2ki6x5q)o6w((", request_type="question_answers",
                                  site="stackoverflow",
                                  sort="votes", order="desc",

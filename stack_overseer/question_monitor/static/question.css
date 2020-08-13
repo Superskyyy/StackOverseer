@@ -6,6 +6,17 @@
     padding-left: 20px !important;
 }
 
+.sidebar .sidebar-brand {
+    height: 4.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    letter-spacing: 0.05rem;
+    z-index: 1;
+}
+
 .q-title {
 
     padding-left: 100px !important; /* add a padding from left side*/
@@ -74,4 +85,53 @@
     min-height: 1px;
     padding: 0.75rem;
 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #4EB555;
+    border-color: #4EB555;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #6EBF74;
+    border-color: #6EBF74;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #4EB555;
+    border-color: #4EB555;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #4EB555;
+    border-color: #4EB555;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    color: #fff;
+    background-color: #4EB555;
+    border-color: #4EB555;
+    box-shadow: 0 0 0 0.2rem;
+}
+
+
+.bg-gradient-primary {
+    background-color: #4EB555;
+    background-image: linear-gradient(180deg, #4EB555 10%, #6284ec 100%);
+    background-size: cover;
+}
+
+.fa-info-circle {
+    color: white;
+    cursor: pointer;
 }

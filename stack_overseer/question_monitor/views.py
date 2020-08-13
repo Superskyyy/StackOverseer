@@ -9,15 +9,6 @@ from .data_extractor import Extractor
 from .rss_parser import RSSExtractor
 
 
-class HomePageView(TemplateView):
-    template_name = "question_monitor/home.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        messages.info(self.request, "hello http://example.com")
-        return context
-
-
 class TrendingView(TemplateView):
     template_name = "question_monitor/trending.html"
 
@@ -62,7 +53,7 @@ class LatestView(TemplateView):
         # change this to ajax or page lags
         # logic: get 10 top voted questions over the last week.
         question_extractor = Extractor(api_key="6pOvVEqSzJc2ki6x5q)o6w((", request_type="search", site="stackoverflow",
-                                       tagged="android", page=1, pagesize=10, sort="creationn")
+                                       tagged="android", page=1, pagesize=10, sort="creation")
         question_json = question_extractor.extract()
 
         top_ten = []  # a list of top ten votes
@@ -90,3 +81,12 @@ def get_answer(request):
         stack_feed_json = RSSExtractor(question_id=question_id).parse()
     data = {'data': stack_feed_json}
     return JsonResponse(data)
+
+
+class HomePageView(TemplateView):
+    template_name = "question_monitor/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        messages.info(self.request, "hello http://example.com")
+        return context

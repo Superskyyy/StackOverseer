@@ -14,8 +14,8 @@ urlpatterns = [
 urlpatterns += [
     url(r"^$", views.HomePageView.as_view(), name="home"),
     url(r"^trending$", views.TrendingView.as_view(), name="trending"),
-    url(r"^latest$", views.TrendingView.as_view(), name="latest"),
-    url("answers/", views.get_answer, name="get_answer")
+    url(r"^latest$", views.LatestView.as_view(), name="latest"),
+    url("answers/", views.get_answer, name="get_answer"),
 
 ]
 app_name = 'question_monitor'

@@ -8,11 +8,10 @@ verify_ssl = true
 [packages]
 pipenv = "*"
 django = "*"
-pyecharts = "*"
 requests = "*"
 django-bootstrap4 = "*"
-djangify = "*"
 feedparser = "*"
+django-leaflet = "*"
 
 [requires]
 python_version = "3.7"

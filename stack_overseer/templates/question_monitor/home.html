@@ -6,25 +6,20 @@
 <!-- Here we inject the non UI part in each html template page -->
 {% block main %}
 
+    <!-- Essential css -->
+    <link href=" {% static 'question.css' %} " rel="stylesheet" type="text/css">
 
-    <!-- First list ten most voted questions of last week -->
+    <!-- chart content Starts here -->
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dasaaaaaaaahboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-        </div>
+        <!-- chart content ends here -->
+
+        {% include "question_monitor/charts.html" %}
+
+
     </div>
-
-
-
-
-
-
-
 
 
 

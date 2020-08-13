@@ -114,7 +114,7 @@
                                     html_base.push("<div id='modal-data-wrap'>" +
                                         "<div>" + data.data.items[e][0] + "</div>" +
                                         "<div>" + data.data.items[e][1] + "</div>" +
-                                        "<div>" + data.data.items[e][2] + "</div>" + "</div>")
+                                        "<a href=" + data.data.items[e][2] + ">" + "Navigate to Original Page</a>" + "</div>")
 
                                     {% comment %}                         $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[e][0] + "</div>");
                                                              $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[e][1] + "</div>");
