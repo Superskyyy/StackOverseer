@@ -50,15 +50,17 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Views</h6>
-                        <a class="collapse-item" href=" {% url 'question_monitor:question' %} ">Trending Questions</a>
+                        <a class="collapse-item" href=" {% url 'question_monitor:trending' %} ">Trending Questions</a>
+                        <a class="collapse-item" href=" {% url 'question_monitor:latest' %} ">Latest Questions</a>
+
                     </div>
                 </div>
+
             </li>
 
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
 
 
         </ul> <!-- end of sidebar!!!!!!!!!! -->

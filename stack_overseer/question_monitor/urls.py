@@ -13,7 +13,8 @@ urlpatterns = [
 
 urlpatterns += [
     url(r"^$", views.HomePageView.as_view(), name="home"),
-    url(r"^question$", views.QuestionView.as_view(), name="question"),
+    url(r"^trending$", views.TrendingView.as_view(), name="trending"),
+    url(r"^latest$", views.TrendingView.as_view(), name="latest"),
     url("answers/", views.get_answer, name="get_answer")
 
 ]
