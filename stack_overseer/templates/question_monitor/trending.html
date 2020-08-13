@@ -1,0 +1,140 @@
+{% extends 'question_monitor/ui_base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load index %}
+
+<!-- Here we inject the non UI part in each html template page -->
+{% block main %}
+
+
+
+
+    <link href=" {% static 'trending.css' %} " rel="stylesheet" type="text/css">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Trending Questions (This Week)</h1>
+        </div>
+
+        <div class="row">
+            {% for i in card_loop %}
+
+                <!-- Now we have 10 boxes of identical size and style, ready to inject data -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters ">
+                                <div class="col mr-2 stats">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Votes
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ top_ten|index:forloop.counter0|index:0 }}</div>
+                                    </div>
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Views
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ top_ten|index:forloop.counter0|index:0 }}</div>
+                                    </div>
+
+                                    <a href="{{ top_ten|index:forloop.counter0|index:1 }}" target="_blank"
+                                       title="Click here to StackOverflow"> <i class="fas fa-link fa-2x "></i></a>
+
+                                </div>
+                                <div class="col-auto q-title">
+
+                                    <a data-toggle="modal"
+                                       data-target="#exampleModalLong{{ top_ten|index:forloop.counter0|index:4 }}">
+                                        <h2>
+                                            <small>
+                                                {{ top_ten|index:forloop.counter0|index:3 }}
+                                                {{ top_ten|index:forloop.counter0|index:4 }}
+                                                <div id="question_id"
+                                                     hidden>{{ top_ten|index:forloop.counter0|index:4 }}</div>
+                                            </small>
+                                        </h2>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <!-- Modal -->
+
+                <div class="modal fade" id="exampleModalLong{{ top_ten|index:forloop.counter0|index:4 }}" tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Q&A</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="rss-response" id="rss{{ top_ten|index:forloop.counter0|index:4 }}">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Vote this question!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <script type="text/javascript">
+                    var question_id = "{{ top_ten|index:forloop.counter0|index:4}}";
+
+                    $('#exampleModalLong{{ top_ten|index:forloop.counter0|index:4 }}').on('shown.bs.modal', function (e) {
+                        e.preventDefault();
+                        var question_id = "{{ top_ten|index:forloop.counter0|index:4}}";
+                        $.get(location.origin + '/answers/',
+                            {'question_id': question_id},
+                            function (data) {
+                                console.log(data.data.items[0][0]);
+                                for (let i = 0; i < 2; i++) {
+
+                                    $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[0][i] + "</div>");
+                                    console.log(i);
+                                }
+
+                                $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div class='topbar-divider d-none d-sm-block'>--------------------------</div>");
+                                $('#rss{{ top_ten|index:forloop.counter0|index:4 }}').append("<div>" + data.data.items[1][1] + "</div>");
+                                console.log(1111);
+                            }
+                        );
+                    });
+                </script>
+            {% endfor %}
+        </div>
+
+
+        {##}
+        {#               <script type="text/javascript">#}
+        {#                            $('#exampleModalLong63342557').on('shown.bs.modal', function (e) {#}
+        {#                                e.preventDefault();#}
+        {#                                var question_id = "63342557";#}
+        {#                                $.get(location.origin + '/answers/',#}
+        {#                                    {'question_id': question_id},#}
+        {#                                    function (response) {#}
+        {##}
+        {#                                        $('#response_msg').text(response.msg);#}
+        {#                                    }#}
+        {#                                );#}
+        {#                            });#}
+        {#                        </script>#}
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pipenv = "*"
+django = "*"
+pyecharts = "*"
+requests = "*"
+django-bootstrap4 = "*"
+djangify = "*"
+feedparser = "*"
+
+[requires]
+python_version = "3.7"
