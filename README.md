@@ -15,14 +15,15 @@ The Q&A monitor:
 * [wordcloud2.js](https://github.com/search?q=wordcloud2) - Tag cloud/Wordle presentation on 2D canvas or HTML.
 * [Feedparser](https://github.com/kurtmckee/feedparser) - Parse feeds in Python.
 * [Docker](https://www.docker.com/) - Docker Engine.
-
+* [Gunicorn](https://pypi.org/project/gunicorn/) - Python Http Server.
 
 
 
     
 ### Deploy
 
-Docker - uwasgi 
+Docker - Gunicorn  
+
 ### PyLint
 - Pycharm - Preference - Plugin - Marketplace 
 
