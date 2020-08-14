@@ -12,6 +12,7 @@ requests = "*"
 django-bootstrap4 = "*"
 feedparser = "*"
 django-leaflet = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

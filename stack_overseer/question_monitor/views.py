@@ -104,7 +104,6 @@ def parse_heat():
     result = []
     for each_address in address_list:
         address = each_address.split("|")
-        print(address)
         result.append([address[0], address[1], 0.1])
     return result
 
