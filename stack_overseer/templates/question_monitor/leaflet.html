@@ -1,0 +1,24 @@
+{% load static %}
+
+{% load leaflet_tags %}
+
+{% leaflet_js plugins="heat" %}
+{% leaflet_css %}
+{% leaflet_map "stackoverflow_hotspot" callback="window.map_init_basic" %}
+
+<script>
+    function map_init_basic(map, options) {
+
+        L.marker([50.5, 30.5]).addTo(map);
+        var heat = L.heatLayer([
+            [50.5, 30.5, 0.1], // lat, lng, intensity
+            [55, 45, 0.2], [55, 46, 0.2], [56, 46, 0.2],
+            [55, 35, 0.1],
+
+        ], {radius: 35}, {blur: 4}).addTo(map);
+    }
+
+
+</script>
+
+

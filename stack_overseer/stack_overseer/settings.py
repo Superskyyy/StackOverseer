@@ -46,6 +46,20 @@ INSTALLED_APPS += [
     'bootstrap4',
     'leaflet',
 ]
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (44.231821, -76.483134),
+    'DEFAULT_ZOOM': 1,
+    'MIN_ZOOM': 2,
+    'MAX_ZOOM': 18,
+    'DEFAULT_PRECISION': 6,
+    'PLUGINS': {
+        'heat': {
+            'js': ['leaflet-heat.js'],
+            'auto-include': True,
+        },
+
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

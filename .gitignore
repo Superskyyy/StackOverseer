@@ -168,3 +168,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# APIKEY
+stack_overseer/question_monitor/config/api_config.py

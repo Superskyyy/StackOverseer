@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 
+from .config.api_config import API_KEY
 from .data_extractor import Extractor
 from .rss_parser import RSSExtractor
 
@@ -23,7 +24,7 @@ class TrendingView(TemplateView):
         DAY = 86400  # exact epoch time for a day
         # change this to ajax or page lags
         # logic: get 10 top voted questions over the last week.
-        question_extractor = Extractor(api_key="6pOvVEqSzJc2ki6x5q)o6w((", request_type="search", site="stackoverflow",
+        question_extractor = Extractor(api_key=API_KEY, request_type="search", site="stackoverflow",
                                        tagged="android", page=1, pagesize=10, sort="votes",
                                        fromdate=int(time.time()) - DAY * 7, todate=int(time.time()))
         question_json = question_extractor.extract()
@@ -52,7 +53,7 @@ class LatestView(TemplateView):
         DAY = 86400  # exact epoch time for a day
         # change this to ajax or page lags
         # logic: get 10 top voted questions over the last week.
-        question_extractor = Extractor(api_key="6pOvVEqSzJc2ki6x5q)o6w((", request_type="search", site="stackoverflow",
+        question_extractor = Extractor(api_key=API_KEY, request_type="search", site="stackoverflow",
                                        tagged="android", page=1, pagesize=10, sort="creation")
         question_json = question_extractor.extract()
 
@@ -86,7 +87,17 @@ def get_answer(request):
 class HomePageView(TemplateView):
     template_name = "question_monitor/home.html"
 
+    def parse(self):
+        with open("address_book.txt", "r") as address_book:
+            line = address_book.readline()
+        address_list = line.split(";")
+        result = []
+        for each_address in address_list:
+            address = each_address.split("-")
+            result.append([address[0], address[1]])
+        return result
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        messages.info(self.request, "hello http://example.com")
+        context["heat_map"] = self.parse()
         return context
