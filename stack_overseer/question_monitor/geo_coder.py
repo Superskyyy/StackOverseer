@@ -1,3 +1,8 @@
+"""
+A utility to call geo_coder APIs
+Change the url_constructor if a new geo_coder api is used
+
+"""
 import json
 import time
 from urllib.parse import quote
@@ -8,29 +13,23 @@ from stack_overseer.question_monitor.config.api_config import GEO_CODER_API, GEO
 
 
 def geo_coder(address: str):
+    # constructs url
     url = GEO_CODER_API_ENDPOINT + quote(address) + ".JSON?key=" + GEO_CODER_API
-    print(url)
     try:
         time.sleep(0.1)
         result = requests.get(url)
-    except:
+    except:  # bad request
         return ("-1", "-1")
 
     def jsonify(raw_result):
+        # decode the results to unicode
         cleaned = raw_result.decode('utf8')
-        # cleaned = cleaned.replace("'s", ' s')
-
-        # cleaned = cleaned.replace("'", '"')
-
-        print(cleaned)
+        # load to json format
         data = json.loads(cleaned)
-        # result = json.dumps(data, indent=4, sort_keys=True)
-        # print(result)
+
         return data
 
-    print(result)
     cleaned = jsonify(result.content)
-    print(cleaned)
 
     try:
         geo_code = cleaned["results"][0]['position'] if len(cleaned["results"]) > 0 else {'lat': -1, 'lon': -1}

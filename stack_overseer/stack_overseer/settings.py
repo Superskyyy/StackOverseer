@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-ALLOWED_HOSTS = ['*']
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -24,6 +24,7 @@ SECRET_KEY = 'h2$hle8x$y2^$1=)(#hg_h!e%(w+py!+q_8$kga7s)+sw27%a!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# When deploy change this to a set of hosts
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -46,6 +47,7 @@ INSTALLED_APPS += [
     'bootstrap4',
     'leaflet',
 ]
+
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (44.231821, -76.483134),
     'DEFAULT_ZOOM': 1,
@@ -133,6 +135,5 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-import os
 
 STATIC_URL = '/static/'

@@ -1,5 +1,6 @@
 /*.row {
-    flex-direction: column;
+    This is the css that modifies specific page logic UI,
+    as a extension to question_monitor.css.
 }*/
 .stats { /*This sets the cards to vertical stack*/
     width: 200px;

@@ -3,7 +3,13 @@
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+
+* Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin)
+* Copyright 2013-2020 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
+
+  This is the main css that contains all UI styles, including bootstrap theme css.
+}*/
 :root {
     --blue: #4e73df;
     --indigo: #6610f2;
@@ -2565,7 +2571,6 @@ a.btn.disabled,
 fieldset:disabled a.btn {
     pointer-events: none;
 }
-
 
 
 .btn-secondary {
@@ -10367,14 +10372,6 @@ a.text-info:hover, a.text-info:focus {
 
 a.text-warning:hover, a.text-warning:focus {
     color: #dda20a !important;
-}
-
-.text-danger {
-    color: #e74a3b !important;
-}
-
-a.text-danger:hover, a.text-danger:focus {
-    color: #be2617 !important;
 }
 
 .text-light {

@@ -6,14 +6,11 @@
 <!-- Here we inject the non UI part in each html template page -->
 {% block main %}
 
-
-
-
     <link href=" {% static 'question.css' %} " rel="stylesheet" type="text/css">
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <!-- Page Heading -->
+        <!-- Page Heading with a refresh button-->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Latest Questions on <strong>Android</strong> (Real Time) </h1>
             <button onClick="window.location.reload();" class="btn btn-primary"><span
@@ -132,9 +129,10 @@
                 </script>
             {% endfor %}
         </div>
+    </div>
 
 
-        {##}
+    {##}
         {#               <script type="text/javascript">#}
         {#                            $('#exampleModalLong63342557').on('shown.bs.modal', function (e) {#}
         {#                                e.preventDefault();#}

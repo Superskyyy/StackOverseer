@@ -1,3 +1,6 @@
+"""
+A data extractor handles all requests to stackExchange API endpoints.
+"""
 import json
 from urllib.parse import urlencode
 

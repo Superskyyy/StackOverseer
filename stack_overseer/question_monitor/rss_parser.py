@@ -1,3 +1,7 @@
+"""
+A utility module that parses a incoming RSS feed url
+calls feedparser project to handle lower level work
+"""
 import json
 
 import feedparser
@@ -32,7 +36,6 @@ class RSSExtractor:
         json_data = json.dumps(data)
 
         json_data = json.loads(json_data)
-        # print(json_data)
         return json_data
 
 

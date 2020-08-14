@@ -11,6 +11,7 @@ urlpatterns = [
 
 ]
 
+# urls from question_monitor application
 urlpatterns += [
     url(r"^$", views.HomePageView.as_view(), name="home"),
     url(r"^trending$", views.TrendingView.as_view(), name="trending"),

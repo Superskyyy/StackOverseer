@@ -9,4 +9,4 @@ services:
     volumes:
       - .:/stack_overseer
     ports:
-      - "8000:8000"
+      - "0.0.0.0:80:8000"

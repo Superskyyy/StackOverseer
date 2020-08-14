@@ -1,9 +1,5 @@
 {% load bootstrap4 %}
 {% load static %}
-
-<script src="https://cdn.bootcss.com/wordcloud2.js/1.1.0/wordcloud2.js"></script>
-
-
 <!-- Begin Page Content -->
 <div class="container-fluid" id="home-container">
 
@@ -37,10 +33,10 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
 
-<script src="{% static "vendor/Chart.min.js" %}"></script>
-<script src="{% static "charts.js" %}"></script> <!-- this is our own chart-->
+
+<script src="https://cdn.bootcss.com/wordcloud2.js/1.1.0/wordcloud2.js"></script>
+
 <script>
 
     $.get(location.origin + '/wordcloud/',
@@ -58,8 +54,6 @@
                 "rotateRatio": 1 // probability for the word to rotate. 1 means always rotate
             });
             var canvas = document.getElementById('word-cloud-canvas');
-
-            // this line is the only change from your snippet:
 
             WordCloud(canvas, options);
         });
