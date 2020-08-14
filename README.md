@@ -4,7 +4,7 @@
 
 !["core"](https://github.com/Superskyyy/StackOverseer/blob/dev/preview_monitor.png
 )
-Core Feature:
+## Core Feature:
 
 - On the left sidebar, a tools section gives the entrance to two pages.
 - Each serves a real-time monitored page on 10 latest or 10 trending Questions on "#Android".
@@ -19,7 +19,7 @@ Core Feature:
 
 - These pages can be stacked or modified to take user inputs on monitoring different tags/filters with few changes.
 
-Bonus Features:
+## Bonus Features:
 - Following two features doesn't use real-time scraping due to API limits and costs. 
     Few minor modifications will allow more frequent runs.
     
