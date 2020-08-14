@@ -87,6 +87,27 @@
 !important;
 }
 
+#home-container {
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+canvas#word-cloud-canvas {
+    margin-top: 50px;
+    border: 1px solid;
+    border-color: blue;
+    border-radius: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+"
+}
+
+#chart-card {
+    height: 850px;
+
+}
+
 .btn-primary {
     color: #fff;
     background-color: #4EB555;

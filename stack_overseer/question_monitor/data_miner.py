@@ -70,14 +70,14 @@ def heatmap_parser(tag: str):
 
     print(address_total_collection, )
     print(len(address_total_collection), len(set(address_total_collection)))
-    with open("last_week_question_user_address_list.txt", "w", encoding='utf-8') as address_book:
+    with open("static/last_week_question_user_address_list.txt", "w", encoding='utf-8') as address_book:
         for each_address in address_total_collection:
             address_book.write(each_address + ";")
 
 
 def geo_json_batch_generation():
     # I choose not to use a database cas theres no need..
-    with open("last_week_question_user_address_list.txt", "r", encoding='utf-8') as address_book:
+    with open("static/last_week_question_user_address_list.txt", "r", encoding='utf-8') as address_book:
         address_book_list = address_book.readline()
     address_book_list = address_book_list.split(";")
     address_book_set = list(set(address_book_list))
@@ -94,17 +94,56 @@ def geo_json_batch_generation():
         if not address:
             continue
         result_data_list.append(address_dict[address])
-    with open("address_book.txt", "w", encoding='utf-8') as address_book:
+    with open("static/address_book.txt", "w", encoding='utf-8') as address_book:
         for each_geocode in result_data_list:
             address_book.write(each_geocode[0] + "-" + each_geocode[1] + ";")
 
     print(result_data_list)
 
 
+def tag_miner(tag: str):
+    """
+    :param tag target tag to mine
+    This is a simple data miner parsing
+    bunch of API responses from stackExchange
+    :return:
+    """
+
+    DAY = 86400  # exact epoch time for a day
+    page_num = 1
+    initial_batch = Extractor(api_key=API_KEY, request_type="search", site="stackoverflow",
+                              tagged=str(tag), sort="votes",
+                              fromdate=int(time.time()) - DAY * 7, todate=int(time.time()),
+                              page=page_num, pagesize=100).extract()
+    going = True
+    data = [initial_batch["items"]]
+    while (going == True):
+        page_num += 1
+        time.sleep(1)  # dont overload the api endpoint
+        question_extractor = Extractor(api_key=API_KEY, request_type="search", site="stackoverflow",
+                                       tagged=str(tag), sort="votes",
+                                       fromdate=int(time.time()) - DAY * 7, todate=int(time.time()),
+                                       page=page_num, pagesize=100)
+        question_json = question_extractor.extract()
+        if question_json["has_more"] != True:
+            going = False
+        data.append(question_json["items"])
+    print("question count /user count", len(data))  # this number * 100 = question count on "tag"
+    tag_table = []
+    for each_page in data:
+        for each_question in each_page:
+            for each_tag in each_question["tags"]:
+                tag_table.append(each_tag)
+
+    with open("static/last_week_question_tags.txt", "w", encoding='utf-8') as tag_book:
+        for each_tag in tag_table:
+            tag_book.write(each_tag + ";")
+
+
 # A simple test
 if __name__ == "__main__":
     # do not over test, theres a quota of 10000 daily with token
     # 300 without https://stackapps.com/apps/oauth/
-
+    tag_miner("android")
     # heatmap_parser(tag="android")
-    geo_json_batch_generation()
+    # geo_json_batch_generation()

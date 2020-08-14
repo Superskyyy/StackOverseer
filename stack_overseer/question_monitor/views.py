@@ -1,5 +1,6 @@
 import html
 import time
+from collections import Counter
 
 from django.contrib import messages
 from django.http import JsonResponse
@@ -84,20 +85,42 @@ def get_answer(request):
     return JsonResponse(data)
 
 
+def get_heatmap(request):
+    if request.method == 'GET':
+        data = {'data': parse_heat()}
+    return JsonResponse(data)
+
+
+def get_word_cloud(request):
+    if request.method == 'GET':
+        data = {'data': parse_word_cloud()}
+    return JsonResponse(data)
+
+
+def parse_heat():
+    with open("question_monitor/static/address_book.txt", "r") as address_book:
+        line = address_book.readline()
+    address_list = line.split(";")
+    result = []
+    for each_address in address_list:
+        address = each_address.split("|")
+        print(address)
+        result.append([address[0], address[1], 0.1])
+    return result
+
+
 class HomePageView(TemplateView):
     template_name = "question_monitor/home.html"
 
-    def parse(self):
-        with open("address_book.txt", "r") as address_book:
-            line = address_book.readline()
-        address_list = line.split(";")
-        result = []
-        for each_address in address_list:
-            address = each_address.split("-")
-            result.append([address[0], address[1]])
-        return result
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["heat_map"] = self.parse()
         return context
+
+
+def parse_word_cloud():
+    with open("question_monitor/static/last_week_question_tags.txt", "r") as tag_book:
+        line = tag_book.readline()
+    tag_list = line.split(";")
+    result = list(Counter(tag_list).items())
+
+    return result
