@@ -19,6 +19,11 @@
 
 - These pages can be stacked or modified to take user inputs on monitoring different tags/filters with few changes.
 
+## Limitations
+
+Features like voting are not implemented as it requires complex auth process. 
+UI components are in place though. 
+ 
 ## Bonus Features:
 - Following two features doesn't use real-time scraping due to API limits and costs. 
     Few minor modifications will allow more frequent runs.
