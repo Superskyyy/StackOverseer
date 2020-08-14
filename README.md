@@ -1,15 +1,43 @@
 # StackOverseer
-See the titles of the 10 newest User-defined-related questions and the 10 most voted in the past week.
 
-The Q&A monitor:
-- StackOverflow disallows accessing any answer-related-content via iFrames or API. So a RSS feed parser would give the best results.
+#### See the titles of the 10 newest User-defined-related questions and the 10 most voted in the past week.
 
-Bonus Feature:
+!["core"](https://github.com/Superskyyy/StackOverseer/blob/dev/preview_monitor.png
+)
+## Core Feature:
 
+- On the left sidebar, a tools section gives the entrance to two pages.
+- Each serves a real-time monitored page on 10 latest or 10 trending Questions on "#Android".
+
+- By clicking on the buttons/ interactive UI, a user can 
+    1. Navigate to original Question page via new tab.
+    2. Preview Question & Answer threads by clicking on the listed question.
+    3. See the Votes & Answer count in a straightforward UI.
+
+- StackOverflow disallows accessing any answer-related-content via iFrames or API. 
+    Parsing the RSS feed became the next best option.
+
+- These pages can be stacked or modified to take user inputs on monitoring different tags/filters with few changes.
+
+## Limitations
+
+Features like voting are not implemented as it requires complex auth process. 
+UI components are in place though. 
+ 
+## Bonus Features:
+- Following two features doesn't use real-time scraping due to API limits and costs. 
+    Few minor modifications will allow more frequent runs.
+    
+- Almost responsive design.. smartphone compatible.
+
+!["heatmap"](https://github.com/Superskyyy/StackOverseer/blob/dev/preview_heatmap.png)
 - Data visualization of "User heatmap who asked a Android related question over the past week"
     - This feature is implemented using Leaflet.js
-    - This feature is rendered via AJAX call to Django backend static file, ideally a cron-job will scrape the API often.
+!["wordcloud"](https://github.com/Superskyyy/StackOverseer/blob/dev/preview_wordcloud.png)
+
 - Data visualization of "Technologies most related to Android over the past week" 
+    - This feature is implemented using wordcloud2.js and a Geocoder API.
+    
 
 ## Built With
 
