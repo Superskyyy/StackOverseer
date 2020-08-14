@@ -4,9 +4,17 @@ See the titles of the 10 newest User-defined-related questions and the 10 most v
 The Q&A monitor:
 - StackOverflow disallows accessing any answer-related-content via iFrames or API. So a RSS feed parser would give the best results.
 
+Bonus Feature:
 
+- Data visualization of "User heatmap who asked a Android related question over the past week"
+    - This feature is implemented using Leaflet.js
+    - This feature is rendered via AJAX call to Django backend static file, ideally a cron-job will scrape the API often.
+- Data visualization of "Technologies most related to Android over the past week" 
 
 ## Built With
+
+
+### Technologies 
 * [Django](https://www.djangoproject.com/) - The web framework for perfectionists with deadlines.
 * [jQuery](https://github.com/jquery/jquery) - jQuery JavaScript Library.
 * [Bootstrap](https://github.com/twbs/bootstrap) - The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
@@ -17,25 +25,30 @@ The Q&A monitor:
 * [Docker](https://www.docker.com/) - Docker Engine.
 * [Gunicorn](https://pypi.org/project/gunicorn/) - Python Http Server.
 
+### Services
+
+* [Tom Tom](https://developer.tomtom.com/) - A Geocoder API Service.
+* [StackExchange API](https://api.stackexchange.com/) - StackExchange API
+
+## TO DO LIST: 
+
+- Cleanup code
+- Better Responsive Design
+
 
 
     
 ### Deploy
 
-Docker - Gunicorn  
+Docker - Gunicorn - Tencent Cloud
 
-### PyLint
-- Pycharm - Preference - Plugin - Marketplace 
 
-- Search for Pylint, Install it and reboot Pycharm.
-Pylint will appear as an icon in lower left corner, there's one inside VCS - Commit too.
 
+## This project is Dockerized
 #### Configurations
 1. Modify settings.py in StackOverseer, make sure docker is set to `True`
 
 - To run the project in pure local env (Not recommended).
-
-#### This project is Dockerized
 
 - To build the source code in your local Docker
     - The docker container will automatically reflect latest change of source code.
@@ -58,12 +71,11 @@ Pylint will appear as an icon in lower left corner, there's one inside VCS - Com
 
 
 
+### PyLint
+- Pycharm - Preference - Plugin - Marketplace 
 
-
-## TO DO LIST: 
-
-- Cleanup code
-- Better Responsive Design
+- Search for Pylint, Install it and reboot Pycharm.
+Pylint will appear as an icon in lower left corner, there's one inside VCS - Commit too.
 
 
 
