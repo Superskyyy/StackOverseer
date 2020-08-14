@@ -33,6 +33,7 @@ UI components are in place though.
 !["heatmap"](https://github.com/Superskyyy/StackOverseer/blob/dev/preview_heatmap.png)
 - Data visualization of "User heatmap who asked a Android related question over the past week"
     - This feature is implemented using Leaflet.js
+
 !["wordcloud"](https://github.com/Superskyyy/StackOverseer/blob/dev/preview_wordcloud.png)
 
 - Data visualization of "Technologies most related to Android over the past week" 
